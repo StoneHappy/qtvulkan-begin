@@ -1,6 +1,9 @@
 #pragma once
 #include <QApplication>
 #include "a_hello_vulkan/VulkanWindow.h"
+#include <QLoggingCategory>
+
+Q_LOGGING_CATEGORY(lcVk, "qt.vulkan")
 
 namespace qtvulkanbegin
 {
@@ -9,6 +12,8 @@ namespace qtvulkanbegin
 		int main(int argc, char** argv)
 		{
 			QApplication app(argc, argv);
+
+			QLoggingCategory::setFilterRules(QStringLiteral("qt.vulkan=true"));
 
 			QVulkanInstance inst;
 
