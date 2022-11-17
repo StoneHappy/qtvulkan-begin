@@ -21,6 +21,7 @@ target_link_libraries(${TARGET_NAME} PUBLIC
 Qt5::Core
 Qt5::Gui
 Qt5::Widgets
+Vulkan::Vulkan
           )
 
 target_include_directories(

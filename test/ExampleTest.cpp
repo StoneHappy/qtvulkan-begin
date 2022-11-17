@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include <Core/test.h>
+#include "index.h"
 
-TEST(ExampleTest, SimpleFirstTest)
+TEST(QtVulkanBegin, a_hello_vulkan)
 {
-	EXPECT_TRUE(test());
+	qtvulkanbegin::a_hello_vulkan::main(0, nullptr);
 }

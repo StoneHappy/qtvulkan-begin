@@ -3,10 +3,10 @@
     "cmake.configureArgs" : [
         "-DCMAKE_PREFIX_PATH=D:/softwares/Qt/5.15.2/msvc2015_64",
         "-DCMAKE_BUILD_TYPE=Debug",
-        "-DDEBUG_ARGUES=--gtest_filter="
+        "-DDEBUG_ARGUES=--gtest_filter=QtVulkanBegin.a_hello_vulkan"
     ],
     // "cmake.generator": "Ninja",
     "cmake.debugConfig": {
-        "args": ["--gtest_filter="]
+        "args": ["--gtest_filter=QtVulkanBegin.a_hello_vulkan"]
     }
 }

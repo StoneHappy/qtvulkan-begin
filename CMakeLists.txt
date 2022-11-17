@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 
-project(AppName VERSION 0.1.0)
+project(qtvulkan-begin VERSION 0.1.0)
 
 
-option(ENABLE_TEST "Enable google test" OFF)
+option(ENABLE_TEST "Enable google test" ON)
 option(ENABLE_DOCS "Enable doxygen docs" ON)
 
 
@@ -51,6 +51,9 @@ find_package(Qt5 COMPONENTS
         REQUIRED)
 
 
+find_package(Vulkan REQUIRED)
+
+
 add_subdirectory(src)
 
 if(ENABLE_TEST)
@@ -61,4 +64,4 @@ endif()
 if(ENABLE_DOCS)
   build_docs(PROCESS_DOXYFILE TRUE DOXYFILE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/doc/Doxyfile.in")
 endif()
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT "ExampleTest")
