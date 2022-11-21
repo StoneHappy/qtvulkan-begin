@@ -2,6 +2,9 @@
 #include <glm/glm.hpp>
 #include <array>
 #include <cstddef>
+#include "j_shader_modules_vert.h"
+#include "j_shader_modules_frag.h"
+#include <VulkanLib/ShaderModule.h>
 namespace b_hello_triangle
 {
 	struct Vertex
@@ -22,13 +25,14 @@ namespace b_hello_triangle
 	{
 		qDebug("initResources");
 		VkDevice dev = m_window->device();
+		
 		m_devFuncs = m_window->vulkanInstance()->deviceFunctions(dev);
 
 		VkBufferCreateInfo bufferInfo;
 		bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
 		bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-
-
+		VkShaderModule vertexShader = VulkanLib::createShader(dev, j_shader_modules_vert, sizeof(j_shader_modules_vert));
+		VkShaderModule fragShader = VulkanLib::createShader(dev, j_shader_modules_frag, sizeof(j_shader_modules_frag));
 	}
 
 	void Renderer::initSwapChainResources()
@@ -55,6 +59,7 @@ namespace b_hello_triangle
 		bindingDescription.binding = 0;
 		bindingDescription.stride = sizeof(Vertex);
 		bindingDescription.inputRate = VK_VERTEX_INPUT_RATE_VERTEX;
+		return bindingDescription;
 	}
 	std::array<VkVertexInputAttributeDescription, 2> Vertex::getAttributeDescriptions()
 	{
@@ -68,5 +73,6 @@ namespace b_hello_triangle
 		attributeDescriptions[1].location = 1;
 		attributeDescriptions[1].format = VK_FORMAT_R32G32B32_SFLOAT;
 		attributeDescriptions[1].offset = offsetof(Vertex, color);
+		return attributeDescriptions;
 	}
 }
